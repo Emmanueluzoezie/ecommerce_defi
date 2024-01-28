@@ -4,7 +4,7 @@ import { FaCartPlus, FaStar } from "react-icons/fa";
 import { MdRemove, MdAdd, MdAddChart } from "react-icons/md";
 
 type Props = {
-    item: Product,
+    item: any,
     solPrice: number
 }
 

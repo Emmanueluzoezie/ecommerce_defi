@@ -27,10 +27,15 @@ const ProductComponent = () => {
   }
   if (error || erro){
     console.log(error)
+    setIsLoading(false)
+  }
+  if (data || solanaPrice){
+    setIsLoading(false)
   }
 
   useEffect(() => {
     if (solanaPrice) {
+      setIsLoading(false)
       setSolPrice(solanaPrice.solana.usd);
     }
   }, [solanaPrice]);
@@ -38,7 +43,7 @@ const ProductComponent = () => {
     <div>
       <div className='flex justify-center flex-wrap'>
         {
-          data?.map((product: any) => (
+          data?.map((product: Product) => (
             <SingleProduct key={product.id} item={product} solPrice={solPrice} />
           ))
         }

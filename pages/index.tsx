@@ -2,11 +2,20 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import HeaderComponent from '../components/headerComponent'
-import ProductComponent from '../components/products/ProductComponent'
+import NftComponent from '../components/nft/NftComponent'
+import { useContextState } from '../context/productContext'
+import { MdClose } from 'react-icons/md'
+import AllAddedProduct from '../components/products/AllAddedProduct'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const { openAddedProduct, setOpenAddedProduct, paymentOption, setPaymentOption} = useContextState()
+
+  const handleCloseAddedProduct = () => {
+    setOpenAddedProduct(false)
+    setPaymentOption(false)
+  }
 
   return (
     <>
@@ -18,7 +27,21 @@ export default function Home() {
       </Head>
       <div>
         <HeaderComponent />
-        <ProductComponent />
+        <div className='relative'>
+          <NftComponent />
+          {openAddedProduct &&
+            <div className='fixed top-20 w-full z-50'>
+              <div className="flex justify-center ">
+                <div className='bg-white min-w-[450px] p-4 shadow-2xl relative'>
+                  <div className='w-fit p-2 z-[100] absolute right-4 hover:bg-gray-200 rounded-full cursor-pointer' onClick={handleCloseAddedProduct}>
+                    <MdClose className='text-2xl' />
+                  </div>
+                  <AllAddedProduct />
+                </div>
+              </div>
+            </div>
+          }
+        </div>
       </div>
     </>
   )

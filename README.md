@@ -1,6 +1,8 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## WELCOME TO ECOMMERCE SOLANA DEFI
+
+A website where you can create NFT, View all the NFTs you created on the website, get a discount on your purchase if you create an NFT in ## ECOMMERCE SOLANA DEFI
 
 First, run the development server:
 

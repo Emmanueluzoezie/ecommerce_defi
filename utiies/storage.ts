@@ -1,5 +1,5 @@
 
-export const addItemAndSaveNft = (item: string) => {
+export const addItemAndSaveNftAddress = (item: string) => {
     let myArray: string[] = JSON.parse(localStorage.getItem('nft') || '[]');
     if (!myArray.includes(item)) {
         myArray.push(item);

@@ -2,6 +2,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { useQuery } from '@tanstack/react-query'
 import React, { useEffect, useState } from 'react'
 import { useContextState } from '../../context/productContext'
+import LoadingComponent from '../Loading'
 import SingleProduct from './SingleProduct'
 
 const ProductComponent = () => {
@@ -14,7 +15,7 @@ const ProductComponent = () => {
         res.json(),
       ),
   })
-  const { isPending:pending, error: erro, data:solanaPrice } = useQuery({
+  const { isPending:pending, error: errorFromSolUri, data:solanaPriceData } = useQuery({
     queryKey: ['rData'],
     queryFn: () =>
       fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd').then((res) =>
@@ -25,22 +26,26 @@ const ProductComponent = () => {
   if (isPending || pending){
     setIsLoading(true)
   }
-  if (error || erro){
-    console.log(error)
+  if (error || errorFromSolUri){
     setIsLoading(false)
   }
-  if (data || solanaPrice){
+  if (data || solanaPriceData){
     setIsLoading(false)
   }
 
   useEffect(() => {
-    if (solanaPrice) {
+    if (solanaPriceData) {
       setIsLoading(false)
-      setSolPrice(solanaPrice.solana.usd);
+      setSolPrice(solanaPriceData.solana.usd);
     }
-  }, [solanaPrice]);
+  }, [solanaPriceData]);
+
+
   return (
     <div>
+      {isPending || pending?
+        <LoadingComponent />
+        : 
       <div className='flex justify-center flex-wrap'>
         {
           data?.map((product: Product) => (
@@ -48,6 +53,7 @@ const ProductComponent = () => {
           ))
         }
       </div>
+      }
     </div>
   )
 }

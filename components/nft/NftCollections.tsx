@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react'
 import { useContextState } from '../../context/productContext';
 import { getUserNfts } from '../../utiies/getUserNfts';
-import { addItemAndSaveNft, getNftAddress } from '../../utiies/storage';
+import { getNftAddress } from '../../utiies/storage';
 
 const apiKey = process.env.NEXT_PUBLIC_HELIUS_API
 
@@ -11,6 +11,7 @@ const NftCollections = () => {
     const [nftData, setNftData] = useState<any>()
     const [nftAddress, setNftAddress] = useState<any>()
     const { currentNftScreen, setCurrentNftScreen, setShowImage } = useContextState()
+    
     const url = `https://api-devnet.helius.xyz/v0/token-metadata?api-key=${apiKey}`
 
     const handleCreateNftButton = () => {
@@ -40,16 +41,16 @@ const NftCollections = () => {
     <div>
         <div>
               {nftData?.length < 0 || nftData?.length  === undefined?
-                <div className='flex flex-col items-center mt-20'>
+                (<div className='flex flex-col items-center mt-20'>
                     <div className='space-y-8'>
                         <h4 className='text-lg text-center'>You don't have any NFT in your collection. Click the button add NFT </h4>
                        <div className='flex justify-center'>
                               <button onClick={handleCreateNftButton} className={` rounded-md px-4 py-1 font-bold text-white bg-[#6206e3]`}>Create NFT</button>
                        </div>
                     </div>
-                </div>
+                </div>)
                 : 
-                <div className='flex justify-center flex-wrap'>
+                (<div className='flex justify-center flex-wrap'>
                     {nftData.map((nftItem: any) => (
                         <div className='max-w-[340px] shadow-2xl m-4 rounded-lg p-4'>
                             <div>
@@ -65,17 +66,10 @@ const NftCollections = () => {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div>)
             }
         </div>
     </div>
   )
 }
-
 export default NftCollections
-
-// it add README.md
-// git commit - m "first commit"
-// git branch - M main
-// git remote add origin https://github.com/Emmanueluzoezie/ecommerce_defi.git
-// git push - u origin main

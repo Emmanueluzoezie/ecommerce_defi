@@ -14,11 +14,8 @@ const AddedProduct = ({ item, solPrice }: Props) => {
     const { productArray, setProductArray } = useContextState()
 
     const removeProduct = (index: number) => {
-        // Create a copy of the array
         const newArray = [...productArray];
-        // Remove the item at the specified index
         newArray.splice(index, 1);
-        // Update the state with the new array
         setProductArray(newArray);
     };
 

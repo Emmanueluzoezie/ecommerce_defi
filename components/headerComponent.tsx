@@ -5,15 +5,6 @@ import { useContextState } from '../context/productContext'
 import { WalletButton } from '../context/solanaProvider'
 import NftHeader from './nft/NftHeader'
 
-const navLinks = [
-    {
-        name: "NFT Collections",
-        href: "nft_collections",
-        id: "2",
-    }
-]
-
-
 const HeaderComponent = () => {
     const { setOpenAddedProduct, productArray } = useContextState()
 
@@ -28,14 +19,15 @@ const HeaderComponent = () => {
   return (
       <div className='sticky top-0 bg-white z-40'>
           <div className='flex items-center justify-between p-4'>
-              <div className='w-[200px]'>
-                  <h2>Ecommerce Defi</h2>
+              <div className='w-[250px] cursor-pointer'>
+                  <h2 className='font-bold text-xl'>Ecommerce Solana Defi</h2>
               </div>
               <div className='flex-1 hidden md:flex'>
                   <NftHeader />
               </div>
-              {/* <button className='bg-green-900 text-white font-semibold px-4 py-[4px] rounded-md'>Connect</button> */}
+
               <WalletButton />
+
               <div className='pl-4 relative cursor-pointer' onClick={handleShowAddedProduct}>
                   <span className='font-bold absolute -top-4 right-1 text-xl'>{productArray.length}</span>
                   <FaCartPlus className='text-[#4d07b0] text-3xl' />

@@ -16,6 +16,7 @@
     "@metaplex-foundation/umi-bundle-defaults": "^0.9.0",
     "@metaplex-foundation/umi-uploader-bundlr": "^0.9.0",
     "@next/font": "13.1.1",
+    "@solana/pay": "^0.2.5",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
     "@solana/wallet-adapter-react-ui": "^0.9.35",

@@ -1,11 +1,10 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import HeaderComponent from '../components/headerComponent'
-import NftComponent from '../components/nft/NftComponent'
 import { useContextState } from '../context/productContext'
 import { MdClose } from 'react-icons/md'
 import AllAddedProduct from '../components/products/AllAddedProduct'
+import HomeComponent from "../components/HomeComponent"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -28,7 +27,7 @@ export default function Home() {
       <div>
         <HeaderComponent />
         <div className='relative'>
-          <NftComponent />
+          <HomeComponent />
           {openAddedProduct &&
             <div className='fixed top-20 w-full z-50'>
               <div className="flex justify-center ">

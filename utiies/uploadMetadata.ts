@@ -1,9 +1,7 @@
 import { toMetaplexFileFromBrowser } from "@metaplex-foundation/js";
 import { createSignerFromKeypair, Keypair, publicKey, signerIdentity, Umi } from "@metaplex-foundation/umi";
-import { createUmi } from "@metaplex-foundation/umi-bundle-defaults";
 import { createBundlrUploader } from "@metaplex-foundation/umi-uploader-bundlr"
 
-// const umi = createUmi('https://api.devnet.solana.com')
 
 export const getMetadataUrl = async(
     name: string,
@@ -39,6 +37,6 @@ export const getMetadataUrl = async(
         const uri = await bundlrUploader.uploadJson(metadata);
         return uri;
     } catch (error) {
-        throw error; // Rethrow the error for higher-level error handling
+        throw error; 
     }
 }
